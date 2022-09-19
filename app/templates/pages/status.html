@@ -1,0 +1,57 @@
+<br>
+
+<div class="row">
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="total-orders">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Total Orders</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{total_orders}}</h3>
+			  	</div>
+				  <div class="card-body">
+					{% for order in orders %}
+			    	<h5 class="card-title">{{order}}</h5>
+					{% endfor %}
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="orders-delivered">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Orders Delivered</h5>
+			  	</div>
+				  <div class="card-body">
+			    	<h3 class="card-title">{{delivered_count}}</h3>
+			  	</div>
+			  	<div class="card-body">
+					{% for d_order in delivered %}
+			    	<h5 class="card-title">{{d_order}}</h5>
+					{% endfor %}
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="orders-pending">
+				<div class="card-header">
+					<h5 class="card-title">Orders Pending</h5>
+				</div>
+				<div class="card-body">
+					<h3 class="card-title">{{pending_count}}</h3>
+				</div>
+				<div class="card-body">
+					{% for p_order in pending %}
+					<h5 class="card-title">{{p_order}}</h5>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,90 @@
+{%  extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+	<br>
+
+	
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5 style="color: black; " >Contact Information</h5>
+			<hr>
+			<p>Name: {{customer}}</p>
+			<p>Email: {{customer.email}}</p>
+			<p>Phone: {{customer.phone}}</p>
+            <p>Address: {{customer.address}}</p>
+		</div>
+		<hr>
+			<a style="background-color: gray;" class="btn btn-outline  btn-sm btn-block" href="{% url 'create_order' customer.id %}"><strong>Place Order</strong></a>
+		
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5 style="color: black; ">Total Orders</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{order_count}}</h1>
+		</div>
+	</div>
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+
+			{% comment %} <form method="get">
+				{{myFilter.form}}
+
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form> {% endcomment %}
+
+		</div>
+	</div>
+	
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Product</th>
+					<th>Date Orderd</th>
+					<th>Status</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+
+				{% for order in orders %}
+
+				<tr>
+					<td>{{order.product}}</td>
+					{% comment %} <td>{{order.note}}</td> {% endcomment %}
+					<td>{{order.date_created}}</td>
+					<td>{{order.status}}</td>
+					<td><a class="btn btn-sm btn-info" href="">Update</a></td>
+
+					<td><a class="btn btn-sm btn-danger" href="">Delete</a></td>
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+<style>
+	h5{
+		color: black;
+		font-size: 20px;
+		font-weight: 600;
+		margin-bottom: 10px;
+	}
+</style>
+
+{% endblock %}

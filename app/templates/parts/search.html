@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+<title>{% block title %}Search..{% endblock %}</title>
+
+
+{% block content %}
+    
+    {% if searched == '' %}
+        <h3 style="text-align: center; color: white;"> Please enter a search term. We found nothing to search!
+            <button style="background-color: white; border: 0px solid white; border-radius: 7px; margin-top: 10px;">
+                <a style="font-size: 20px; padding: 12px; color: black; text-align: center;" href="{% url 'products' %}">Go back</a>
+            </button>
+        </h3>
+        
+    {% else %}
+        {% if products %}  <!-- if results are not empty -->
+        <div style="text-align: center; color: white; font-size: 23px; margin-top: 5%;">
+            <h3>We found for your search about {{ counting }} results</h3>
+        </div>
+        <br />
+        <div style="
+            background-color: white;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+            width: 50%;
+            margin-left: 25%;
+            margin-top: 2%;
+        ">
+            <table class="table">
+              <tr>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Description</th>
+              </tr>
+      
+              {% for i in products %}
+              <tr>
+                <td>{{i.name}}</td>
+                <td>{{i.category}}</td>
+                <td>{{i.price}}</td>
+                <td>{{i.description}}</td>
+              </tr>
+              {% endfor %}
+            </table>
+          </div>
+                <button style="margin-left: 45%; background-color: white; border: 0px solid white; border-radius: 7px; margin-top: 10px;">
+                    <a style="font-size: 20px; padding: 12px; color: black; text-align: center;" href="{% url 'products' %}">Go back</a>
+                </button>
+        
+        
+            {% else %}
+                <h3 style="text-align: center; color: white;">No products found.
+                    <button style="background-color: white; border: 0px solid white; border-radius: 7px; margin-top: 14px;">
+                    <a style="font-size: 20px; padding: 12px; color: black; text-align: center;" href="{% url 'products' %}">Go back</a></button>
+                </h3>
+            {% endif %}
+
+    {% endif %}
+
+
+{% endblock %}
+
